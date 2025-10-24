@@ -6,10 +6,13 @@ Send me a message if you get lost.
 */
 
 import 'package:flutter/material.dart';
+import 'MorseMessage.dart';
 
-void testFunc(TextEditingController textController, String inputText) {
+void testFunc(TextEditingController textController, String? inputText) {
   // This changes the text for the "Output Field".
-  textController.text = inputText;
+  MorseMessage input =   MorseMessage.fac("encode", inputText);
+
+  textController.text =  input.plaintext??'';// maybe change to !(SOlo si siempre tendra resultado)
 
   // Add your functionality here.
 }
