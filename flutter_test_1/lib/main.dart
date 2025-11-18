@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_1/alec_changes_here/alec_home_page.dart';
+import 'package:flutter_test_1/alec_changes_here/nova_crypt_portrait.dart';
+import 'alec_changes_here/nova_crypt_landscape.dart';
 import 'home_page.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: const MyHomePage(),
-      home: alecHomePage(),
+      // home: novacryptPortraitUI(),
+      home: novacryptLandscapeUI(),
     );
   }
 }
