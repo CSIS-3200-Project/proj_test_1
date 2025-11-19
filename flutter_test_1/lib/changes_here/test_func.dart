@@ -6,13 +6,27 @@ Send me a message if you get lost.
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test_1/changes_here/test_file.dart';
 import 'MorseMessage.dart';
+import 'ShiftMessage.dart';
 
-void testFunc(TextEditingController textController, String? inputText) {
+// void testFunc(TextEditingController textController, String? inputText) {
+void testFunc(TextEditingController textController, String inputText) {
   // This changes the text for the "Output Field".
-  MorseMessage input =   MorseMessage.fac("encode", inputText);
 
-  textController.text =  input.plaintext??'';// maybe change to !(SOlo si siempre tendra resultado)
+  MorseMessage input = MorseMessage.fac("decode", inputText);
+  input.decrypt();
+  //input.displayData("decode")!     para el textcontroller para tester morse code
+
+  // ShiftMessage input = ShiftMessage.fac("encode", inputText, 5);
+  //input.encrypt();
+  // input.displayData("encode")! para el texcontroller para test shift
+
+  textController.text = input.displayData("decode")!;
+
+  // textController.text =
+  //     input.displayData("decode") ??
+  ''; // maybe change to !(SOlo si siempre tendra resultado)input.displayData("encode")??''
 
   // Add your functionality here.
 }
