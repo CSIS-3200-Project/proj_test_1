@@ -75,15 +75,15 @@ class ShiftMessage extends Message {
   }
 
   List<int> convertToNums(List<String> message) {
-    List<int> NumList = [];
+    List<int> numList = [];
     for (int index = 0; index < message.length; index++) {
       if (message[index] != " ") {
-        NumList.add(alphabet.indexOf(message[index].toLowerCase()));
+        numList.add(alphabet.indexOf(message[index].toLowerCase()));
       } else {
-        NumList.add(-1);
+        numList.add(-1);
       }
     }
-    return NumList;
+    return numList;
   }
 
   void shiftText(int shift) {
