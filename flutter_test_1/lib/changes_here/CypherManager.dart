@@ -1,25 +1,41 @@
-import 'package:flutter_test_1/changes_here/Message.dart';
-
-import 'MorseMessage.dart';
-import 'ShiftMessage.dart';
+import 'crypto_library.dart';
 
 class CypherManager {
   CypherManager._();
 
-  void flowControl(String state, String tecnique, String input, int shift) {
-    switch (tecnique) {
+  static String flowControl(
+    String state,
+    String technique,
+    String input,
+    int shift,
+  ) {
+    Message? cypher;
+    switch (technique) {
       case "shift Cypher":
-        ShiftMessage message = ShiftMessage.fac(state, input, shift);
+        cypher = ShiftMessage.fac(state, input, shift);
         break;
       case "Morse Code":
-        MorseMessage message = MorseMessage.fac(state, input);
+        cypher = MorseMessage.fac(state, input);
         break;
+      default:
+        throw Exception("Unknown Techinque");
     }
 
     switch (state) {
       case "encode":
-        message.encrypt();
+        cypher.encrypt();
+        break;
       case "decode":
+        cypher.decrypt();
+        break;
+      default:
+        throw Exception("Unknown State");
     }
+
+    return cypher.displayData(state)!;
   }
 }
+
+
+
+// production works with enums or strings 

@@ -1,5 +1,4 @@
 import 'Message.dart';
-import 'package:flutter/cupertino.dart';
 
 class ShiftMessage extends Message {
   List<String> splitMessage = [];
