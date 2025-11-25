@@ -88,66 +88,66 @@ class _NovaCryptLandscapeUIState extends State<_NovaCryptLandscapeUI> {
             ),
           ),
 
-          // Title
-          const Positioned(
-            left: 35,
-            top: 28,
-            child: Text(
-              'NovaCrypt',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 40,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w600,
-                letterSpacing: -4.40,
-              ),
+        // Title
+        const Positioned(
+          left: 35,
+          top: 28,
+          child: Text(
+            'NovaCrypt',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w600,
+              letterSpacing: -4.40,
             ),
           ),
+        ),
 
-          // Input Box
-          Positioned(
-            left: 20,
-            top: 218,
-            right: 740,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Opacity(
-                  opacity: 0.5,
-                  child: Text(
-                    'Type Here',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 480, width: 680),
-                TextField(
-                  controller: inputController,
-                  onChanged: (text) => setState(() => outputText = text),
-                  style: const TextStyle(
+        // Input Box
+        Positioned(
+          left: 20,
+          top: 218,
+          right: 740,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Opacity(
+                opacity: 0.5,
+                child: Text(
+                  'Type Here',
+                  style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 24,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w400,
                   ),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFF22303C),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: 'Enter text...',
-                    hintStyle: const TextStyle(color: Color(0xFF8899AC)),
+                ),
+              ),
+              const SizedBox(height: 480, width: 680),
+              TextField(
+                controller: inputController,
+                onChanged: (text) => setState(() => outputText = text),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                ),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xFF22303C),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide.none,
                   ),
-                )
-              ],
-            )
-          )
+                  hintText: 'Enter text...',
+                  hintStyle: const TextStyle(color: Color(0xFF8899AC)),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_test_1/backend/test_func.dart';
 
 Widget novacryptPortraitUI() {
   return Scaffold(
@@ -37,71 +38,76 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
   }
 
   void _showSettingsModal() {
-  showModalBottomSheet(
-    context: context,
-    backgroundColor: const Color(0xFF192734),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-    ),
-    builder: (context) => Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            'Shift Cypher & Logs',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: const Color(0xFF192734),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+      ),
+      builder: (context) => Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Shift Cypher & Logs',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          // Shift amount input
-          ListTile(
-            title: Row(
-              children: [
-                const Text('Shift Amount:', style: TextStyle(color: Colors.white)),
-                const SizedBox(width: 10),
-                SizedBox(
-                  width: 50,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color(0xFF22303C),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
+            const SizedBox(height: 10),
+            // Shift amount input
+            ListTile(
+              title: Row(
+                children: [
+                  const Text(
+                    'Shift Amount:',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 50,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xFF22303C),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          // Logs section
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              color: const Color(0xFF22303C),
-              borderRadius: BorderRadius.circular(12),
+            const SizedBox(height: 10),
+            // Logs section
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: const Color(0xFF22303C),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListView(
+                padding: const EdgeInsets.all(10),
+                children: const [
+                  Text(
+                    'Previous messages will appear here',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              children: const [
-                Text('Previous messages will appear here', style: TextStyle(color: Colors.white)),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   void showLanguageModal(Function(String) onSelected) {
     if (showAboutCard) return;
@@ -255,7 +261,12 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                 const SizedBox(height: 10),
                 TextField(
                   controller: inputController,
-                  onChanged: (text) => setState(() => outputText = text),
+                  // onChanged: (text) => setState(() => outputText = text),
+                  onSubmitted: (value) async {
+                    setState(() {
+                      testFunc(inputController, value);
+                    });
+                  },
                   style: const TextStyle(color: Colors.white, fontSize: 16),
                   decoration: InputDecoration(
                     filled: true,
@@ -341,7 +352,7 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                   ),
                 ),
               ),
-            ),  
+            ),
           ),
 
           // Bottom Bar
@@ -359,7 +370,10 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -476,7 +490,8 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                             ),
                           ),
                           const TextSpan(
-                            text: 'Project Lead\n'
+                            text:
+                                'Project Lead\n'
                                 'Helmi Hernandez\n\n'
                                 'Back-End\n'
                                 'Juan Dominguez\n\n'
