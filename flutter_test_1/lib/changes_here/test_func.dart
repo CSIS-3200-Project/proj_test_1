@@ -20,11 +20,11 @@ void testFunc(TextEditingController textController, String inputText) {
   //input.encrypt();
   // input.displayData("encode")! para el texcontroller para test shift
 
-  String modeChoice = "decode";
-  // String modeChoice = "encode";
+  // String modeChoice = "decode";
+  String modeChoice = "encode";
 
-  // String cypherType = "shift Cypher";
-  String cypherType = "Morse Code";
+  String cypherType = "shift Cypher";
+  // String cypherType = "Morse Code";
 
   int shiftCypher = 5;
 
