@@ -9,28 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'CypherManager.dart';
 
-// void testFunc(TextEditingController textController, String? inputText) {
 void testFunc(
   TextEditingController textController,
   String inputText,
   String inputLang,
   String outputLang,
 ) {
-  // This changes the text for the "Output Field".
-
-  print(inputLang);
-  print(outputLang);
-
+  // Setting string variables to mitigate issues with any misspelling of string.
   String encodeStr = "encode";
   String decodeStr = "decode";
   String plainTextStr = "plain text";
   String shiftCypherStr = "shift Cypher";
   String morseCodeStr = "Morse Code";
 
-  // String modeChoice = "decode";
   String modeChoice = "";
   String cypherType = "";
-  String output = "";
+  int shiftCypher = 5;
 
   if (equalsIgnoreAsciiCase(inputLang, outputLang)) {
     textController.text = inputText;
@@ -63,45 +57,14 @@ void testFunc(
     }
   }
 
-  // outputLang = Plain Text
-  // if (equalsIgnoreAsciiCase(outputLang, plainTextStr)) {
-  //   modeChoice = decodeStr;
-  //   if (equalsIgnoreAsciiCase(inputLang, morseCodeStr)) {
-  //     cypherType = morseCodeStr;
-  //   } else {
-  //     cypherType = shiftCypherStr;
-  //   }
-  // } else {
-  //   modeChoice = encodeStr;
-
-  //   // outputLang = Morse Code
-  //   if (equalsIgnoreAsciiCase(outputLang, morseCodeStr)) {
-  //     if (equalsIgnoreAsciiCase(inputLang, plainTextStr)) {
-  //       cypherType = morseCodeStr;
-  //     } else {
-  //       cypherType = shiftCypherStr;
-  //     }
-  //   }
-  //   // outputLang = Shift Cypher
-  //   else {
-  //     if (equalsIgnoreAsciiCase(inputLang, plainTextStr)){
-  //       cypherType =
-  //     }
-  //   }
-  // }
-
-  // if (equalsIgnoreAsciiCase(outputLang, ))
-
-  int shiftCypher = 5;
+  String output = "";
 
   output = CypherManager.flowControl(
-    // "encode",
     modeChoice,
     cypherType,
     inputText,
     shiftCypher,
   );
 
-  //input.displayData("decode")!
   textController.text = output;
 }

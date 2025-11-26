@@ -22,9 +22,9 @@ class _NovaCryptPortraitUI extends StatefulWidget {
 }
 
 class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
-  // final TextEditingController inputController = TextEditingController();
   TextEditingController inputController = TextEditingController();
   String outputText = '';
+  final List logList = <String>[];
   bool showAboutCard = false;
 
   String selectedInputLanguage = 'Plain Text';
@@ -42,10 +42,12 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
     super.dispose();
   }
 
-  // selectedInputLanguage options
-  // 'Plain Text'
-  // 'Morse Code'
-  //  'Shift Cypher'
+  /*
+   selectedInputLanguage options
+   'Plain Text'
+   'Morse Code'
+   'Shift Cypher'
+  */
   void swapLanguages() {
     setState(() {
       var temp = selectedInputLanguage;
@@ -112,10 +114,17 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
               ),
               child: ListView(
                 padding: const EdgeInsets.all(10),
-                children: const [
-                  Text(
-                    'Previous messages will appear here',
-                    style: TextStyle(color: Colors.white),
+                children: [
+                  SelectableText(
+                    logList.isEmpty
+                        ? 'Previous messages will appear here'
+                        : logList
+                              .map((log) {
+                                return log + '\n';
+                              })
+                              .join('')
+                              .toString(),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -288,6 +297,10 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                         selectedOutputLanguage,
                       );
                       outputText = inputController.text;
+                      (outputText.isEmpty || outputText.contains('?'))
+                          ? null
+                          : logList.add(outputText);
+                      print(logList);
                     });
                   },
                   style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -335,16 +348,12 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: SelectableText(
-                    // child: Text(
-                    // child: TextField(
                     outputText.isEmpty ? "..." : outputText,
-                    // controller: inputController,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontFamily: 'Inter',
                     ),
-                    // ),
                   ),
                 ),
               ],
