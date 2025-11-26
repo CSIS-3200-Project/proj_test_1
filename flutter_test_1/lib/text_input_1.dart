@@ -37,7 +37,7 @@ class _TextInput1State extends State<TextInput1> {
             ),
             onSubmitted: (value) async {
               setState(() {
-                testFunc(textController, value);
+                // testFunc(textController, value);
               });
             },
           ),

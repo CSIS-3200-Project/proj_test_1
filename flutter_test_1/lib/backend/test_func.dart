@@ -6,29 +6,95 @@ Send me a message if you get lost.
 */
 
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import 'CypherManager.dart';
 
 // void testFunc(TextEditingController textController, String? inputText) {
-void testFunc(TextEditingController textController, String inputText) {
+void testFunc(
+  TextEditingController textController,
+  String inputText,
+  String inputLang,
+  String outputLang,
+) {
   // This changes the text for the "Output Field".
 
-  //MorseMessage input = MorseMessage.fac("decode", inputText);
-  // input.decrypt();
-  //input.displayData("decode")!     para el textcontroller para tester morse code
+  print(inputLang);
+  print(outputLang);
 
-  // ShiftMessage input = ShiftMessage.fac("encode", inputText, 5);
-  //input.encrypt();
-  // input.displayData("encode")! para el texcontroller para test shift
+  String encodeStr = "encode";
+  String decodeStr = "decode";
+  String plainTextStr = "plain text";
+  String shiftCypherStr = "shift Cypher";
+  String morseCodeStr = "Morse Code";
 
   // String modeChoice = "decode";
-  String modeChoice = "encode";
+  String modeChoice = "";
+  String cypherType = "";
+  String output = "";
 
-  String cypherType = "shift Cypher";
-  // String cypherType = "Morse Code";
+  if (equalsIgnoreAsciiCase(inputLang, outputLang)) {
+    textController.text = inputText;
+    return;
+  }
+
+  if (equalsIgnoreAsciiCase(inputLang, plainTextStr)) {
+    modeChoice = encodeStr;
+
+    if (equalsIgnoreAsciiCase(outputLang, morseCodeStr)) {
+      cypherType = morseCodeStr;
+    } else {
+      cypherType = shiftCypherStr;
+    }
+  } else if (equalsIgnoreAsciiCase(inputLang, morseCodeStr)) {
+    if (equalsIgnoreAsciiCase(outputLang, plainTextStr)) {
+      modeChoice = decodeStr;
+      cypherType = morseCodeStr;
+    } else {
+      modeChoice = encodeStr;
+      cypherType = shiftCypherStr;
+    }
+  } else {
+    if (equalsIgnoreAsciiCase(outputLang, plainTextStr)) {
+      modeChoice = decodeStr;
+      cypherType = shiftCypherStr;
+    } else {
+      modeChoice = encodeStr;
+      cypherType = morseCodeStr;
+    }
+  }
+
+  // outputLang = Plain Text
+  // if (equalsIgnoreAsciiCase(outputLang, plainTextStr)) {
+  //   modeChoice = decodeStr;
+  //   if (equalsIgnoreAsciiCase(inputLang, morseCodeStr)) {
+  //     cypherType = morseCodeStr;
+  //   } else {
+  //     cypherType = shiftCypherStr;
+  //   }
+  // } else {
+  //   modeChoice = encodeStr;
+
+  //   // outputLang = Morse Code
+  //   if (equalsIgnoreAsciiCase(outputLang, morseCodeStr)) {
+  //     if (equalsIgnoreAsciiCase(inputLang, plainTextStr)) {
+  //       cypherType = morseCodeStr;
+  //     } else {
+  //       cypherType = shiftCypherStr;
+  //     }
+  //   }
+  //   // outputLang = Shift Cypher
+  //   else {
+  //     if (equalsIgnoreAsciiCase(inputLang, plainTextStr)){
+  //       cypherType =
+  //     }
+  //   }
+  // }
+
+  // if (equalsIgnoreAsciiCase(outputLang, ))
 
   int shiftCypher = 5;
 
-  String output = CypherManager.flowControl(
+  output = CypherManager.flowControl(
     // "encode",
     modeChoice,
     cypherType,
@@ -36,20 +102,6 @@ void testFunc(TextEditingController textController, String inputText) {
     shiftCypher,
   );
 
-  // String output = CypherManager.flowControl(
-  //   // "encode",
-  //   modeChoice,
-  //   cypherType,
-  //   inputText,
-  //   shiftCypher,
-  // );
-
   //input.displayData("decode")!
   textController.text = output;
-
-  // textController.text =
-  //     input.displayData("decode") ??
-  ''; // maybe change to !(SOlo si siempre tendra resultado)input.displayData("encode")??''
-
-  // Add your functionality here.
 }

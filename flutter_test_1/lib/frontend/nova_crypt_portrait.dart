@@ -22,16 +22,33 @@ class _NovaCryptPortraitUI extends StatefulWidget {
 }
 
 class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
-  final TextEditingController inputController = TextEditingController();
+  // final TextEditingController inputController = TextEditingController();
+  TextEditingController inputController = TextEditingController();
   String outputText = '';
   bool showAboutCard = false;
 
   String selectedInputLanguage = 'Plain Text';
   String selectedOutputLanguage = 'Morse Code';
 
+  @override
+  void initState() {
+    super.initState();
+    inputController.text = "Input Goes Here";
+  }
+
+  @override
+  void dispose() {
+    inputController.dispose();
+    super.dispose();
+  }
+
+  // selectedInputLanguage options
+  // 'Plain Text'
+  // 'Morse Code'
+  //  'Shift Cypher'
   void swapLanguages() {
     setState(() {
-      final temp = selectedInputLanguage;
+      var temp = selectedInputLanguage;
       selectedInputLanguage = selectedOutputLanguage;
       selectedOutputLanguage = temp;
     });
@@ -260,11 +277,17 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                 ),
                 const SizedBox(height: 10),
                 TextField(
-                  controller: inputController,
+                  // controller: inputController,
                   // onChanged: (text) => setState(() => outputText = text),
                   onSubmitted: (value) async {
                     setState(() {
-                      testFunc(inputController, value);
+                      testFunc(
+                        inputController,
+                        value,
+                        selectedInputLanguage,
+                        selectedOutputLanguage,
+                      );
+                      outputText = inputController.text;
                     });
                   },
                   style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -311,13 +334,17 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                     color: const Color(0xFF192734),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text(
+                  child: SelectableText(
+                    // child: Text(
+                    // child: TextField(
                     outputText.isEmpty ? "..." : outputText,
+                    // controller: inputController,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontFamily: 'Inter',
                     ),
+                    // ),
                   ),
                 ),
               ],
