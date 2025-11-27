@@ -44,6 +44,20 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
     super.dispose();
   }
 
+  void callTestFunc(String value) {
+    testFunc(
+      inputController,
+      value,
+      selectedInputLanguage,
+      selectedOutputLanguage,
+      shiftInput,
+    );
+    outputText = inputController.text;
+    (outputText.isEmpty || outputText.contains('?'))
+        ? null
+        : logList.add(outputText);
+  }
+
   void checkShiftValid() {
     var intParse = int.tryParse(shiftController.text);
 
@@ -309,19 +323,7 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                   // onChanged: (text) => setState(() => outputText = text),
                   onSubmitted: (value) async {
                     setState(() {
-                      testFunc(
-                        inputController,
-                        value,
-                        selectedInputLanguage,
-                        selectedOutputLanguage,
-                        shiftInput,
-                      );
-                      outputText = inputController.text;
-                      (outputText.isEmpty || outputText.contains('?'))
-                          ? null
-                          : logList.add(outputText);
-                      // print(shiftController.text);
-                      print(shiftInput);
+                      callTestFunc(value);
                     });
                   },
                   style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -334,6 +336,24 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                     ),
                     hintText: 'Enter text...',
                     hintStyle: const TextStyle(color: Color(0xFF8899AC)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: const Opacity(
+                    opacity: 0.5,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Press Enter to receive output.',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
