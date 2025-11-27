@@ -23,6 +23,8 @@ class _NovaCryptPortraitUI extends StatefulWidget {
 
 class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
   TextEditingController inputController = TextEditingController();
+  TextEditingController shiftController = TextEditingController();
+  int shiftInput = 0;
   String outputText = '';
   final List logList = <String>[];
   bool showAboutCard = false;
@@ -40,6 +42,16 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
   void dispose() {
     inputController.dispose();
     super.dispose();
+  }
+
+  void checkShiftValid() {
+    var intParse = int.tryParse(shiftController.text);
+
+    if (intParse != null) {
+      shiftInput = intParse;
+    } else {
+      shiftController.text = shiftInput.toString();
+    }
   }
 
   /*
@@ -88,15 +100,22 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                   const SizedBox(width: 10),
                   SizedBox(
                     width: 50,
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xFF22303C),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide.none,
+                    child: TextFieldTapRegion(
+                      onTapOutside: (PointerDownEvent event) {
+                        checkShiftValid();
+                        FocusScope.of(context).unfocus();
+                      },
+                      child: TextField(
+                        controller: shiftController,
+                        keyboardType: TextInputType.number,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: const Color(0xFF22303C),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide.none,
+                          ),
                         ),
                       ),
                     ),
@@ -295,12 +314,14 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                         value,
                         selectedInputLanguage,
                         selectedOutputLanguage,
+                        shiftInput,
                       );
                       outputText = inputController.text;
                       (outputText.isEmpty || outputText.contains('?'))
                           ? null
                           : logList.add(outputText);
-                      print(logList);
+                      // print(shiftController.text);
+                      print(shiftInput);
                     });
                   },
                   style: const TextStyle(color: Colors.white, fontSize: 16),

@@ -14,6 +14,7 @@ void testFunc(
   String inputText,
   String inputLang,
   String outputLang,
+  int shiftCypher,
 ) {
   // Setting string variables to mitigate issues with any misspelling of string.
   String encodeStr = "encode";
@@ -24,7 +25,6 @@ void testFunc(
 
   String modeChoice = "";
   String cypherType = "";
-  int shiftCypher = 5;
 
   if (equalsIgnoreAsciiCase(inputLang, outputLang)) {
     textController.text = inputText;
