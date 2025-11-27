@@ -134,6 +134,33 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
                       ),
                     ),
                   ),
+                  Spacer(),
+                  // Empty Logs
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        logList.clear();
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF15202B),
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Empty Logs",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'Inter',
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

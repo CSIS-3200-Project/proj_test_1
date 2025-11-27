@@ -98,7 +98,6 @@ class ShiftMessage extends Message {
     }
   }
 
-  // hhhhhhhhhh
   String? displayData(String mode) {
     // mode = encode || decode
     String? output = "ningun if statement fue ejecutado";
