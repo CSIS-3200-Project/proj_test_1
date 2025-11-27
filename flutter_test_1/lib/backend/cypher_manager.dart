@@ -35,7 +35,3 @@ class CypherManager {
     return cypher.displayData(state)!;
   }
 }
-
-
-
-// production works with enums or strings 

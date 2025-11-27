@@ -1,3 +1,3 @@
-export 'cyphers/Message.dart';
-export 'cyphers/MorseMessage.dart';
-export 'cyphers/ShiftMessage.dart';
+export 'cyphers/message.dart';
+export 'cyphers/morse_message.dart';
+export 'cyphers/shift_message.dart';

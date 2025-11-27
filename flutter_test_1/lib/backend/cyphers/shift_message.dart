@@ -1,4 +1,4 @@
-import 'Message.dart';
+import 'message.dart';
 
 class ShiftMessage extends Message {
   List<String> splitMessage = [];

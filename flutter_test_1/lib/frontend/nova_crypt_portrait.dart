@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_test_1/backend/test_func.dart';
+import 'package:flutter_test_1/backend/cypher_func_call.dart';
 
 Widget novacryptPortraitUI() {
   return Scaffold(
@@ -45,7 +45,7 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
   }
 
   void callTestFunc(String value) {
-    testFunc(
+    cypherFuncCall(
       inputController,
       value,
       selectedInputLanguage,

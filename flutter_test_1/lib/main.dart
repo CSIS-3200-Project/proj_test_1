@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'frontend/nova_crypt_landscape.dart';
 import 'frontend/nova_crypt_portrait.dart';
-// import 'home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      // home: const MyHomePage(),
       home: novacryptPortraitUI(),
-      // home: novacryptLandscapeUI(),
     );
   }
 }

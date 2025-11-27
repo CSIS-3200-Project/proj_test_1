@@ -2,7 +2,7 @@
 
 // import 'package:characters/characters.dart';
 import 'package:flutter/cupertino.dart';
-import 'Message.dart';
+import 'message.dart';
 
 class MorseMessage extends Message {
   List<String> splitedMessage = [];

@@ -1,15 +1,8 @@
-/*
-I set it up so all you have to focus on is the `changes_here` folder.
-You can create new functions, classes, and even files to the folder.
-If you're using multiple files, make sure they import each other.
-Send me a message if you get lost.
-*/
-
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
-import 'CypherManager.dart';
+import 'cypher_manager.dart';
 
-void testFunc(
+void cypherFuncCall(
   TextEditingController textController,
   String inputText,
   String inputLang,
@@ -26,6 +19,7 @@ void testFunc(
   String modeChoice = "";
   String cypherType = "";
 
+  // Using equalsIgnoreAsciiCase to avoid issues with upper and lower case.
   if (equalsIgnoreAsciiCase(inputLang, outputLang)) {
     textController.text = inputText;
     return;
