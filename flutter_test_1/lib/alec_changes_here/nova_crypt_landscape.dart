@@ -136,7 +136,7 @@ class _NovaCryptLandscapeUIState extends State<_NovaCryptLandscapeUI> {
             child: Text(
               "Type Here",
               style: TextStyle(
-                color: Colors.white.withOpacity(.55),
+                color: Colors.white.withValues(alpha: 0.55),
                 fontSize: sh(24),
               ),
             ),
@@ -149,7 +149,7 @@ class _NovaCryptLandscapeUIState extends State<_NovaCryptLandscapeUI> {
             child: Text(
               "Output",
               style: TextStyle(
-                color: Colors.white.withOpacity(.55),
+                color: Colors.white.withValues(alpha: 0.55),
                 fontSize: sh(24),
               ),
             ),
@@ -440,7 +440,7 @@ class _NovaCryptLandscapeUIState extends State<_NovaCryptLandscapeUI> {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF15202B),
+          backgroundColor: const Color(0xFF22303C),
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

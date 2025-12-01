@@ -316,17 +316,17 @@ class _NovaCryptPortraitUIState extends State<_NovaCryptPortraitUI> {
           // Settings Button
           Positioned(
             right: 20,
-            bottom: 123, // same height as your language tab
+            bottom: 123,
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
-                onTap: _showSettingsModal, // your function to show the modal
+                onTap: _showSettingsModal,
                 child: Container(
                   width: 96,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF22303C), // button background
-                    borderRadius: BorderRadius.circular(50), // rounded edges
+                    color: const Color(0xFF22303C),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   alignment: Alignment.center,
                   child: const Text(
